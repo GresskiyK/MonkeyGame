@@ -16,6 +16,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
     public static boolean isRightPressed = false; // нажата правая кнопка
     public static TextView textViewScore;
     public static TextView textViewResult;
+    public static LinearLayout gameLayout;
     public static int result=0;
 
     @Override
@@ -23,12 +24,13 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         GameView gameView = new GameView(this); // создаём gameView
-        LinearLayout gameLayout = (LinearLayout) findViewById(R.id.gameLayout); // находим gameLayout
+        gameLayout = (LinearLayout) findViewById(R.id.gameLayout); // находим gameLayout
         gameLayout.addView(gameView); // и добавляем в него gameView
         Button leftButton = (Button) findViewById(R.id.leftButton); // находим кнопки
         Button rightButton = (Button) findViewById(R.id.rightButton);
         textViewScore = findViewById(R.id.textViewScore);
         textViewResult=findViewById(R.id.textViewResult);
+
         leftButton.setOnTouchListener(this); // и добавляем этот класс как слушателя (при нажатии сработает onTouch)
         rightButton.setOnTouchListener(this);
     }
@@ -39,7 +41,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public static void showScore(){
-        textViewResult.setText("Your result:"+result);
+        textViewResult.setText("Your result :"+result);
     }
 
     public boolean onTouch(View button, MotionEvent motion) {

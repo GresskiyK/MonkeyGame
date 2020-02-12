@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -94,12 +95,10 @@ public class GameView extends SurfaceView implements Runnable {
                 unitW = surfaceHolder.getSurfaceFrame().width()/maxX; // вычисляем число пикселей в юните
                 unitH = surfaceHolder.getSurfaceFrame().height()/maxY;
                 ship = new Ship(getContext()); // добавляем корабль
-
-
             }
 
             canvas = surfaceHolder.lockCanvas(); // закрываем canvas
-            canvas.drawColor(Color.BLACK);
+            canvas.drawColor(Color.TRANSPARENT);
             ship.drow(paint, canvas); // рисуем корабль
 
             for(Asteroid asteroid: asteroids){ // рисуем астероиды
