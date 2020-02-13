@@ -7,17 +7,12 @@ import android.graphics.Canvas
 import android.graphics.Paint
 
 open class GameBody {
-    var x
-            = 0f
+    var x = 0f
     var y = 0f
-    var size
-            = 0f
-    protected var speed
-            = 0f
-    var bitmapId
-            = 0
-    private var bitmap
-            : Bitmap? = null
+    var size = 0f
+    protected var speed = 0f
+    var bitmapId = 0
+    private var bitmap: Bitmap? = null
 
     fun init(context: Context) {
         val cBitmap = BitmapFactory.decodeResource(context.resources, bitmapId)
@@ -26,8 +21,7 @@ open class GameBody {
         cBitmap.recycle()
     }
 
-    open fun update() {
-    }
+    open fun update() {}
 
     fun drow(paint: Paint?, canvas: Canvas) {
         bitmap?.let { canvas.drawBitmap(it, x * GameView.unitW, y * GameView.unitH, paint) }

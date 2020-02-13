@@ -22,7 +22,7 @@ class GameView(context: Context?, private val callback: OnDieListener) : Surface
     private var canvas: Canvas? = null
     private val surfaceHolder: SurfaceHolder = holder
     private val items = ArrayList<FallItem>()
-    private val ASTEROID_INTERVAL = 50
+    private val ITEM_INTERVAL = 50
     private var currentTime = 0
     private fun checkCollision() {
         for (item in items) {
@@ -30,14 +30,17 @@ class GameView(context: Context?, private val callback: OnDieListener) : Surface
                 GameActivity.setScore(5)
                 items.remove(item)
                 break
-            } else if (item.isCollision(monkey!!.x, monkey!!.y, monkey!!.size)&&item.bitmapId != R.drawable.banan && item.bitmapId != R.drawable.fireball && item.bitmapId != R.drawable.cold_fireball) {
+            }
+            else if (item.isCollision(monkey!!.x, monkey!!.y, monkey!!.size)&&item.bitmapId != R.drawable.banan && item.bitmapId != R.drawable.fireball && item.bitmapId != R.drawable.cold_fireball) {
                 GameActivity.setScore(2)
                 items.remove(item)
                 break
-            }else if (item.isCollision(monkey!!.x, monkey!!.y, monkey!!.size) && item.bitmapId == R.drawable.fireball) {
+            }
+            else if (item.isCollision(monkey!!.x, monkey!!.y, monkey!!.size) && item.bitmapId == R.drawable.fireball) {
                 callback.onDie()
                 gameRunning = false
-            }else if (item.isCollision(monkey!!.x, monkey!!.y, monkey!!.size) && item.bitmapId == R.drawable.cold_fireball) {
+            }
+            else if (item.isCollision(monkey!!.x, monkey!!.y, monkey!!.size) && item.bitmapId == R.drawable.cold_fireball) {
                 callback.onDie()
                 gameRunning = false
             }
@@ -45,9 +48,9 @@ class GameView(context: Context?, private val callback: OnDieListener) : Surface
     }
 
     private fun checkIfNewAsteroid() {
-        if (currentTime >= ASTEROID_INTERVAL) {
-            val asteroid = FallItem(context)
-            items.add(asteroid)
+        if (currentTime >= ITEM_INTERVAL) {
+            val item = FallItem(context)
+            items.add(item)
             currentTime = 0
         } else {
             currentTime++
@@ -67,8 +70,8 @@ class GameView(context: Context?, private val callback: OnDieListener) : Surface
     private fun update() {
         if (!firstTime) {
             monkey!!.update()
-            for (asteroid in items) {
-                asteroid.update()
+            for (item in items) {
+                item.update()
             }
         }
     }
@@ -84,6 +87,7 @@ class GameView(context: Context?, private val callback: OnDieListener) : Surface
             canvas = surfaceHolder.lockCanvas()
             canvas!!.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
             monkey!!.drow(paint, canvas!!)
+
             for (asteroid in items) {
                 asteroid.drow(paint, canvas!!)
             }
@@ -111,5 +115,5 @@ class GameView(context: Context?, private val callback: OnDieListener) : Surface
 }
 
 interface OnDieListener {
-    fun onDie()
+    fun onDie(){}
 }

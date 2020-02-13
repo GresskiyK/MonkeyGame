@@ -19,18 +19,16 @@
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center_horizontal">
         <TextView
-            android:id="@+id/textViewResult"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/textViewScore"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
             android:background="@drawable/button_background"
             android:gravity="center_vertical"
-            android:text="Enjoy!"
+            android:text="Your score: 0"
             android:textAlignment="center"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/white"
+            android:textSize="30sp" />
 
     </LinearLayout>
 
@@ -58,27 +56,15 @@
             android:id="@+id/leftButton"
             android:layout_width="110dp"
             android:layout_height="60dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="75dp"
             android:background="@drawable/button_background"
             android:text="Left" />
-
-        <TextView
-            android:id="@+id/textViewScore"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_gravity="right"
-            android:background="@drawable/button_background"
-            android:gravity="center_vertical"
-            android:text="0"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
 
         <Button
             android:id="@+id/rightButton"
             android:layout_width="110dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="75dp"
             android:background="@drawable/button_background"
             android:text="Right"
             android:visibility="visible" />

@@ -30,11 +30,11 @@ class GameActivity : AppCompatActivity(), OnTouchListener {
         val leftButton = findViewById<View>(R.id.leftButton) as Button
         val rightButton = findViewById<View>(R.id.rightButton) as Button
         textViewScore = findViewById(R.id.textViewScore)
-        textViewResult = findViewById(R.id.textViewResult)
 
         leftButton.setOnTouchListener(this)
         rightButton.setOnTouchListener(this)
     }
+
 
     override fun onTouch(button: View, motion: MotionEvent): Boolean {
         when (button.id) {
@@ -54,12 +54,11 @@ class GameActivity : AppCompatActivity(), OnTouchListener {
         var isLeftPressed = false
         var isRightPressed = false
         var textViewScore: TextView? = null
-        var textViewResult: TextView? = null
         var gameLayout: LinearLayout? = null
         var result = 0
         fun setScore(score: Int) {
             result += score
-            textViewScore!!.text = "" + result
+            textViewScore!!.text = "Your score: $result"
         }
     }
 }

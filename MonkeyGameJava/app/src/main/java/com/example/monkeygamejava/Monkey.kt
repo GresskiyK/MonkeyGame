@@ -14,7 +14,7 @@ class Monkey(context: Context?) : GameBody() {
 
     init {
         bitmapId = R.drawable.monkey_model
-        size = 6F
+        size=5.5F
         x = 8F
         y = GameView.maxY - size - 0
         speed = 0.4.toFloat()
